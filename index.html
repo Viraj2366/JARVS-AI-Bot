@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVS - AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <h3>⚙️ Settings</h3>
+            <div class="setting-group">
+                <label for="botColor">Bot Color:</label>
+                <input type="color" id="botColor" value="#00d4ff">
+            </div>
+            <div class="setting-group">
+                <label for="voiceSelect">Voice:</label>
+                <select id="voiceSelect">
+                    <option value="google">Google (English US)</option>
+                    <option value="natural">Natural Voice</option>
+                    <option value="robotic">Robotic</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="themeSelect">Theme:</label>
+                <select id="themeSelect">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                    <option value="neon">Neon</option>
+                </select>
+            </div>
+            <button id="resetSettings">Reset Settings</button>
+        </div>
+
+        <!-- Main Chat Interface -->
+        <div class="main-interface">
+            <div class="header">
+                <div class="jarvs-logo">
+                    <span class="logo-text">J.A.R.V.S</span>
+                    <span class="subtitle">Just Another Rather Very Smart Assistant</span>
+                </div>
+                <div class="status-indicator">
+                    <span id="statusText">Ready</span>
+                    <div class="pulse" id="statusPulse"></div>
+                </div>
+            </div>
+
+            <!-- Chat Display -->
+            <div class="chat-display" id="chatDisplay">
+                <div class="welcome-message">
+                    <h2>Welcome to J.A.R.V.S 🤖</h2>
+                    <p>Your AI Assistant for Questions, Planning, Problem-Solving, Coding & App Creation</p>
+                    <p style="font-size: 12px; margin-top: 20px;">💡 Tip: Just say "Hey JARVS" and start talking!</p>
+                </div>
+            </div>
+
+            <!-- Voice Visualizer -->
+            <div class="voice-visualizer" id="voiceVisualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <!-- Waiting Song Display -->
+            <div class="waiting-display" id="waitingDisplay" style="display: none;">
+                <div class="waiting-text">JARVS is thinking...</div>
+                <div class="musical-notes">
+                    <span>♪</span><span>♫</span><span>♪</span><span>♫</span><span>♪</span>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <button id="micButton" class="mic-button">
+                    <span class="mic-icon">🎤</span>
+                    <span id="micText">Start Listening</span>
+                </button>
+                <button id="gameButton" class="game-button">🎮 Games</button>
+                <button id="clearButton" class="clear-button">🗑️ Clear</button>
+            </div>
+
+            <!-- Text Input (Fallback) -->
+            <div class="text-input-area">
+                <input type="text" id="textInput" placeholder="Type your question here...">
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Games Modal -->
+    <div id="gamesModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🎮 JARVS Games</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="startGame('trivia')">
+                    <h3>🧠 Trivia Challenge</h3>
+                    <p>Test your knowledge</p>
+                </div>
+                <div class="game-card" onclick="startGame('riddle')">
+                    <h3>🎭 Riddle Master</h3>
+                    <p>Solve funny riddles</p>
+                </div>
+                <div class="game-card" onclick="startGame('wordchain')">
+                    <h3>🔗 Word Chain</h3>
+                    <p>Chain words together</p>
+                </div>
+                <div class="game-card" onclick="startGame('quickmath')">
+                    <h3>⚡ Quick Math</h3>
+                    <p>Solve math problems fast</p>
+                </div>
+                <div class="game-card" onclick="startGame('aiquest')">
+                    <h3>🗺️ AI Quest</h3>
+                    <p>Interactive adventure</p>
+                </div>
+                <div class="game-card" onclick="startGame('jokebattle')">
+                    <h3>😂 Joke Battle</h3>
+                    <p>Exchange jokes with JARVS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Play Area -->
+    <div id="gamePlayArea" class="game-play-area" style="display: none;">
+        <div class="game-header">
+            <h2 id="gameTitle">Game</h2>
+            <button class="close-game" onclick="exitGame()">✕</button>
+        </div>
+        <div id="gameContent" class="game-content"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>
